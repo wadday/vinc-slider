@@ -139,6 +139,15 @@
 </script>
 
 <style lang="scss">
+  html {
+    box-sizing: border-box;
+  }
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
 
   @mixin media($breakpoint) {
     @media (max-width: $breakpoint) {
