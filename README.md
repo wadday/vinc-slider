@@ -1,5 +1,5 @@
 # VincSlider
-#####Simple and attractive slider for banner
+##Simple and attractive slider for banner
 
 Install using NPM:
 ~~~sh
@@ -29,5 +29,5 @@ don't forget to build your project.
 
 This plugin is under development. feel free to fork and contribute.
 
-###Credit / Inspired from
+##Credit / Inspired from
 Emily Hayman `https://codepen.io/eehayman/pen/WReQmv`
