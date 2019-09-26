@@ -1,0 +1,41 @@
+{
+  "private": false,
+  "name": "vinc-slider",
+  "version": "0.0.1",
+  "description": "Simple and attractive slider for banner",
+  "main": "./build/index.js",
+  "scripts": {
+    "dev": "vue serve VincSlider.vue",
+    "build": "bili --name index --plugin vue --vue.css false",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "dist/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wadday/vinc-slider.git"
+  },
+  "keywords": [
+    "Slider",
+    "vinc",
+    "banner",
+    "Vue"
+  ],
+  "author": "Wadday Hassan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wadday/vinc-slider/issues"
+  },
+  "homepage": "https://github.com/wadday/vinc-slider#readme",
+
+  "devDependencies": {
+    "node-sass": "^4.12.0",
+    "sass-loader": "^8.0.0",
+    "bili": "^4.8.1",
+    "eslint": "^6.4.0",
+    "eslint-plugin-vue": "^5.2.3",
+    "rollup-plugin-vue": "^5.0.1",
+    "vue-template-compiler": "^2.6.10"
+  }
+}
