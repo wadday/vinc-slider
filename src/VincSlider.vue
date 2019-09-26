@@ -42,17 +42,17 @@
                     {
                         headlineFirstLine: "The",
                         headlineSecondLine: "Water villas",
-                        bgImg: "/img/header-bg.jpg",
+                        bgImg: "https://cache.marriott.com/marriottassets/marriott/MLEWH/mlewh-wow-oceanhaven-1800-hor-wide.jpg",
                     },
                     {
                         headlineFirstLine: "Fly",
                         headlineSecondLine: "in Maldives",
-                        bgImg: "/img/seaplane.jpg",
+                        bgImg: "https://www.telegraph.co.uk/content/dam/Travel/2016/November/maldives%20anantara%201.jpg",
                     },
                     {
                         headlineFirstLine: "Beautiful",
                         headlineSecondLine: "Beach",
-                        bgImg: "/img/beach.jpg",
+                        bgImg: "https://i.ytimg.com/vi/P9Z6okLJDv0/maxresdefault.jpg",
                     }
                 ]
             }
@@ -122,8 +122,6 @@
 </script>
 
 <style lang="scss">
-
-  //test comp
 
   @mixin media($breakpoint) {
     @media (max-width: $breakpoint) {
