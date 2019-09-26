@@ -3,21 +3,20 @@
     <div class="slide-wrapper"
          v-for="(slide, index) in slides"
          v-bind:class="{ active: index+1 === currentSlide }"
-         v-bind:style="{ 'z-index': (slides.length - index+1), 'background-image': 'url(' + slide.bgImg + ')' }">
+         v-bind:style="{ 'z-index': (slides.length - index+1), 'background-image': 'url(' + slide.image + ')' }">
       <div class="slide-inner">
         <div class="slide-bg-text">
-          <p>{{ slide.headlineFirstLine }}</p>
-          <p>{{ slide.headlineSecondLine }}</p>
+          <p>{{ slide.headline.first }}</p>
+          <p>{{ slide.headline.second }}</p>
         </div>
 
         <div class="slide-content">
           <h1 class="slide-content-text">
-            <p>{{ slide.headlineFirstLine }}</p>
-            <p>{{ slide.headlineSecondLine }}</p>
+            <p>{{ slide.headline.first }}</p>
+            <p>{{ slide.headline.second }}</p>
           </h1>
           <a class="slide-content-cta">Call To Action</a>
         </div>
-
       </div>
     </div>
     <div class="pagination-container">
@@ -25,12 +24,43 @@
                   v-for="(slide, index) in slides"
                   v-bind:class="{ active: index + 1 === currentSlide }"
                   v-on:click="updateSlide(index + 1)"></span>
+
     </div>
   </div>
 </template>
 <script>
     export default {
         name: 'VincSlider',
+
+        props: {
+            slides: {
+                type: Array,
+                required: true,
+                default: [
+                    {
+                        headline: {
+                            first: "The",
+                            second: "Water Villas"
+                        },
+                        image: "https://cache.marriott.com/marriottassets/marriott/MLEWH/mlewh-wow-oceanhaven-1800-hor-wide.jpg",
+                    },
+                    {
+                        headline: {
+                            first: "Fly",
+                            second: "in Maldives"
+                        },
+                        image: "https://www.telegraph.co.uk/content/dam/Travel/2016/November/maldives%20anantara%201.jpg",
+                    },
+                    {
+                        headline: {
+                            first: "Beautiful",
+                            second: "Beach"
+                        },
+                        image: "https://i.ytimg.com/vi/P9Z6okLJDv0/maxresdefault.jpg",
+                    }
+                ]
+            }
+        },
         data() {
 
             return {
@@ -38,36 +68,32 @@
                 isPreviousSlide: false,
                 isFirstLoad: true,
                 timer: null,
-                slides: [
-                    {
-                        headlineFirstLine: "The",
-                        headlineSecondLine: "Water villas",
-                        bgImg: "https://cache.marriott.com/marriottassets/marriott/MLEWH/mlewh-wow-oceanhaven-1800-hor-wide.jpg",
-                    },
-                    {
-                        headlineFirstLine: "Fly",
-                        headlineSecondLine: "in Maldives",
-                        bgImg: "https://www.telegraph.co.uk/content/dam/Travel/2016/November/maldives%20anantara%201.jpg",
-                    },
-                    {
-                        headlineFirstLine: "Beautiful",
-                        headlineSecondLine: "Beach",
-                        bgImg: "https://i.ytimg.com/vi/P9Z6okLJDv0/maxresdefault.jpg",
-                    }
-                ]
+                // slides: [
+                //     {
+                //         headlineFirstLine: "The",
+                //         headlineSecondLine: "Water villas",
+                //         bgImg: "https://cache.marriott.com/marriottassets/marriott/MLEWH/mlewh-wow-oceanhaven-1800-hor-wide.jpg",
+                //     },
+                //     {
+                //         headlineFirstLine: "Fly",
+                //         headlineSecondLine: "in Maldives",
+                //         bgImg: "https://www.telegraph.co.uk/content/dam/Travel/2016/November/maldives%20anantara%201.jpg",
+                //     },
+                //     {
+                //         headlineFirstLine: "Beautiful",
+                //         headlineSecondLine: "Beach",
+                //         bgImg: "https://i.ytimg.com/vi/P9Z6okLJDv0/maxresdefault.jpg",
+                //     }
+                // ]
             }
         },
-        // computed: {
-        //   currentItem: function() {
-        //     return this.slides[Math.abs(this.currentSlide) % this.slides.length]
-        //   }
-        // },
+
         mounted() {
             this.startSlide()
         },
         methods: {
             updateSlide(index) {
-                clearInterval(this.timer)
+                clearInterval(this.timer);
                 index < this.currentSlide ? this.isPreviousSlide = true : this.isPreviousSlide = false;
                 this.currentSlide = index;
                 this.isFirstLoad = false;
@@ -80,15 +106,6 @@
                 } else {
                     this.updateSlide(this.currentSlide + 1)
                 }
-                // clearInterval(this.timer)
-                // if (this.currentSlide === this.slides.length) {
-                //   this.currentSlide = 1
-                // } else {
-                //   this.currentSlide += 1
-                // }
-                // this.isFirstLoad = false;
-                // this.isPreviousSlide = false
-                // this.setTimer()
             },
 
             setTimer() {
@@ -96,7 +113,7 @@
             },
 
             startSlide() {
-                this.timer = setInterval(this.next,5000)
+                this.timer = setInterval(this.next,5000);
                 let productRotatorSlide = document.getElementById("wrap");
                 let startX = 0;
                 let endX = 0;
@@ -271,11 +288,10 @@
         left: calc(#{$left-offset-small} + (.7) * #{$rect-width-small});
       }
       &-text {
-        @apply tracking-wider text-7xl font-light;
-        //font-size: 9rem;
-        //letter-spacing: .2rem;
+        font-size: 9rem;
+        letter-spacing: .2rem;
         line-height: .87;
-        //font-weight: 700;
+        font-weight: 700;
         will-change: auto;
         @include media-height(790px) {
           font-size: 7rem;
